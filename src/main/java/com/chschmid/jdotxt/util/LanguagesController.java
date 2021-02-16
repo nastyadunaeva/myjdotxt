@@ -17,7 +17,7 @@
 * along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
 
-package res.lang;
+package com.chschmid.jdotxt.util;
 
 import java.util.HashMap;
 import java.util.Locale;
@@ -33,7 +33,7 @@ public class LanguagesController {
         supportedLanguages = new HashMap<String,Locale>();
         supportedLanguages.put("English", Locale.ENGLISH);
 
-        translation = ResourceBundle.getBundle("res/lang/language", supportedLanguages.get(language));
+        translation = ResourceBundle.getBundle("lang/language", supportedLanguages.get(language));
     }
 
     public String getWord(String keyword)

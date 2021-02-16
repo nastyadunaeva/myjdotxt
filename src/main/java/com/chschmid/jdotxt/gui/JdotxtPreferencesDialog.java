@@ -97,9 +97,9 @@ public class JdotxtPreferencesDialog extends JDialog {
 		topPanel = new Box(BoxLayout.X_AXIS);
 		topPanel.setBackground(JdotxtGUI.COLOR_GRAY_PANEL);
 		topPanel.setOpaque(true);
-		buttonSettings = new JdotxtImageButton(Util.createImageIcon("/res/drawable/settings.png"));
-		buttonHelp = new JdotxtImageButton(Util.createImageIcon("/res/drawable/help.png"));
-		buttonAbout = new JdotxtImageButton(Util.createImageIcon("/res/drawable/about.png"));
+		buttonSettings = new JdotxtImageButton(Util.createImageIcon("/drawable/settings.png"));
+		buttonHelp = new JdotxtImageButton(Util.createImageIcon("/drawable/help.png"));
+		buttonAbout = new JdotxtImageButton(Util.createImageIcon("/drawable/about.png"));
 
 		styleJdotxtImageButton(buttonSettings, JdotxtGUI.lang.getWord("Settings"));
 		styleJdotxtImageButton(buttonHelp, JdotxtGUI.lang.getWord("Help"));

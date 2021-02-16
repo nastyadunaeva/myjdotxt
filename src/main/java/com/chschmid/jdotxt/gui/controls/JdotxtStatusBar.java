@@ -43,7 +43,7 @@ public class JdotxtStatusBar extends Box {
 	}
 	
 	private void initGUI() {
-		//ImageIcon border  = Util.createImageIcon("/res/drawable/statusbar-border.png");
+		//ImageIcon border  = Util.createImageIcon("/drawable/statusbar-border.png");
 		//this.setBorder(BorderFactory.createMatteBorder(3, 0, 0, 0, border));
 		this.setBackground(JdotxtGUI.COLOR_GRAY_PANEL);
 		this.setOpaque(true);

@@ -72,9 +72,9 @@ public class JdotxtTaskPanel extends JPanel {
 	private JdotxtImageCheckBox checkDone;
 	private JdotxtImageButton buttonDelete;
 	
-	public static final ImageIcon imgComplete   = Util.createImageIcon("/res/drawable/check.png");
-	public static final ImageIcon imgIncomplete = Util.createImageIcon("/res/drawable/uncheck.png");
-	public static final ImageIcon imgDelete     = Util.createImageIcon("/res/drawable/delete.png");
+	public static final ImageIcon imgComplete   = Util.createImageIcon("/drawable/check.png");
+	public static final ImageIcon imgIncomplete = Util.createImageIcon("/drawable/uncheck.png");
+	public static final ImageIcon imgDelete     = Util.createImageIcon("/drawable/delete.png");
 	
 	private Task task;
 	private boolean isNewTask;
@@ -234,8 +234,8 @@ public class JdotxtTaskPanel extends JPanel {
 		panelTodoCommands.setAlignmentY(TOP_ALIGNMENT);
 		
 		if (isNewTask) {
-			if (!compactMode) buttonNewTask = new JdotxtImageButton(Util.createImageIcon("/res/drawable/add.png"));
-			else buttonNewTask = new JdotxtImageButton(Util.createImageIcon("/res/drawable/add_25.png"));
+			if (!compactMode) buttonNewTask = new JdotxtImageButton(Util.createImageIcon("/drawable/add.png"));
+			else buttonNewTask = new JdotxtImageButton(Util.createImageIcon("/drawable/add_25.png"));
 			buttonNewTask.setAlignmentY(TOP_ALIGNMENT);
 			buttonNewTask.setHoverColor(JdotxtGUI.COLOR_HOVER);
 			buttonNewTask.setPressedColor(JdotxtGUI.COLOR_PRESSED);

@@ -45,9 +45,9 @@ public class JdotxtGUItest extends JFrame {
 	public static int MIN_WIDTH = 640;
 	public static int MIN_HEIGHT = 480;
 	
-	ImageIcon iconSave     = Util.createImageIcon("/res/drawable/save.png");
-	public static final ImageIcon selected   = Util.createImageIcon("/res/drawable/check.png");
-	public static final ImageIcon unselected = Util.createImageIcon("/res/drawable/uncheck.png");
+	ImageIcon iconSave     = Util.createImageIcon("/drawable/save.png");
+	public static final ImageIcon selected   = Util.createImageIcon("/drawable/check.png");
+	public static final ImageIcon unselected = Util.createImageIcon("/drawable/uncheck.png");
 	
 	JdotxtImageCheckBox cb;
 	JdotxtTaskPanel tp;

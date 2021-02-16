@@ -24,12 +24,12 @@ import com.chschmid.jdotxt.gui.controls.*;
 import com.chschmid.jdotxt.gui.utils.SortUtils;
 import com.chschmid.jdotxt.util.DelayedActionHandler;
 import com.chschmid.jdotxt.util.FileModifiedListener;
+import com.chschmid.jdotxt.util.LanguagesController;
 import com.todotxt.todotxttouch.task.Priority;
 import com.todotxt.todotxttouch.task.Task;
 import com.todotxt.todotxttouch.task.TaskBag;
 import com.todotxt.todotxttouch.task.sorter.Sorters;
 import com.todotxt.todotxttouch.util.Util;
-import res.lang.LanguagesController;
 
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
@@ -507,9 +507,9 @@ public class JdotxtGUI extends JFrame {
     	// Fonts are not available
     	if (!fontR.getFamily().equals("Ubuntu Light") || !fontB.getFamily().equals("Ubuntu")) {
     		try {
-            	fontR  = Font.createFont(Font.TRUETYPE_FONT, Jdotxt.class.getResourceAsStream("/res/fonts/Ubuntu-R.ttf")).deriveFont(14f);
-            	fontRI = Font.createFont(Font.TRUETYPE_FONT, Jdotxt.class.getResourceAsStream("/res/fonts/Ubuntu-MI.ttf")).deriveFont(14f);
-            	fontB  = Font.createFont(Font.TRUETYPE_FONT, Jdotxt.class.getResourceAsStream("/res/fonts/Ubuntu-B.ttf")).deriveFont(14f);
+            	fontR  = Font.createFont(Font.TRUETYPE_FONT, Jdotxt.class.getResourceAsStream("fonts/Ubuntu-R.ttf")).deriveFont(14f);
+            	fontRI = Font.createFont(Font.TRUETYPE_FONT, Jdotxt.class.getResourceAsStream("fonts/Ubuntu-MI.ttf")).deriveFont(14f);
+            	fontB  = Font.createFont(Font.TRUETYPE_FONT, Jdotxt.class.getResourceAsStream("fonts/Ubuntu-B.ttf")).deriveFont(14f);
     		} catch (FontFormatException e) {
     			// No problem, will also work with another L&F
     		} catch (IOException e) {
@@ -532,7 +532,7 @@ public class JdotxtGUI extends JFrame {
         
         // Get language
         lang = new LanguagesController(language);
-        icon = Util.createImageIcon("/res/drawable/jdo256.png");
+        icon = Util.createImageIcon("/drawable/jdo256.png");
 	}
 	
 	private short calculateVisibility() { 

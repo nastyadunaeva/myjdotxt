@@ -58,16 +58,16 @@ public class JdotxtToolbar extends Box{
 
 	private void initGUI() {
 		// Load images
-		ImageIcon iconSave     = Util.createImageIcon("/res/drawable/save.png");
-		ImageIcon iconReload   = Util.createImageIcon("/res/drawable/reload.png");
-		ImageIcon iconArchive  = Util.createImageIcon("/res/drawable/archive.png");
-		ImageIcon iconSettings = Util.createImageIcon("/res/drawable/settings.png");
-		ImageIcon iconSort = Util.createImageIcon("/res/drawable/sort.png");
-		ImageIcon iconCopy = Util.createImageIcon("/res/drawable/copy.png");
-		ImageIcon iconHide = Util.createImageIcon("/res/drawable/hide.png");
-		ImageIcon iconPrepend = Util.createImageIcon("/res/drawable/prepend.png");
-		ImageIcon iconFuture = Util.createImageIcon("/res/drawable/future.png");
-		//ImageIcon border       = Util.createImageIcon("/res/drawable/toolbar-border.png");
+		ImageIcon iconSave     = Util.createImageIcon("/drawable/save.png");
+		ImageIcon iconReload   = Util.createImageIcon("/drawable/reload.png");
+		ImageIcon iconArchive  = Util.createImageIcon("/drawable/archive.png");
+		ImageIcon iconSettings = Util.createImageIcon("/drawable/settings.png");
+		ImageIcon iconSort = Util.createImageIcon("/drawable/sort.png");
+		ImageIcon iconCopy = Util.createImageIcon("/drawable/copy.png");
+		ImageIcon iconHide = Util.createImageIcon("/drawable/hide.png");
+		ImageIcon iconPrepend = Util.createImageIcon("/drawable/prepend.png");
+		ImageIcon iconFuture = Util.createImageIcon("/drawable/future.png");
+		//ImageIcon border       = Util.createImageIcon("/drawable/toolbar-border.png");
 		
 		// Style toolbar
 		this.setBackground(JdotxtGUI.COLOR_GRAY_PANEL);
@@ -239,8 +239,8 @@ public class JdotxtToolbar extends Box{
 		}
 		
 		private void loadIcons() {
-			imgSearch  = Util.createImageIcon("/res/drawable/search.png");
-			imgX       = Util.createImageIcon("/res/drawable/x.png");
+			imgSearch  = Util.createImageIcon("/drawable/search.png");
+			imgX       = Util.createImageIcon("/drawable/x.png");
 		}
 		
 		public void clearSearch() { clearSearch(true); }
