@@ -35,10 +35,6 @@ You can run the resulting jar file by executing
 
 java -jar target/jdotxt-0.4.9-SNAPSHOT-jar-with-dependencies.jar
 
-To build the OSX app bundle
-
-4. Run "mvn package appbundle:bundle"
-
 #### Third Party Code
 
 jdotxt uses code and libraries from the following open source projects:
