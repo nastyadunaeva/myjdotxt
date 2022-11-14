@@ -21,6 +21,7 @@ package com.chschmid.jdotxt.gui.controls;
 
 import com.todotxt.todotxttouch.task.Task;
 
+@SuppressWarnings("PMD.AvoidUsingShortType")
 public interface TaskListener {
 	public void taskCreated(Task t);
 	public void taskUpdated(Task t, short field);

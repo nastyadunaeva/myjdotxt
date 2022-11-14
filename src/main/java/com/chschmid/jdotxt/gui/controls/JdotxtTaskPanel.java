@@ -49,7 +49,7 @@ import com.todotxt.todotxttouch.task.Priority;
 import com.todotxt.todotxttouch.task.Task;
 import com.todotxt.todotxttouch.util.Util;
 
-@SuppressWarnings("serial")
+@SuppressWarnings({"serial", "PMD.AvoidUsingShortType"})
 public class JdotxtTaskPanel extends JPanel {
 	public final static short ADDNEW             = 0;
 	public final static short PRIORITY           = 1;

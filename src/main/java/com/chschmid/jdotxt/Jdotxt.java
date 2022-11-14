@@ -35,7 +35,10 @@ import com.sun.jna.WString;
 import com.todotxt.todotxttouch.task.LocalFileTaskRepository;
 import com.todotxt.todotxttouch.task.TaskBag;
 import com.todotxt.todotxttouch.task.TaskBagFactory;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager; //NOPMD - suppressed CommentRequired - TODO explain reason for suppression
 
+@SuppressWarnings("PMD.CommentRequired")
 public class Jdotxt {
 	public static final String VERSION = "0.4.8";
 	public static final String APPID   = "chschmid.jdotxt";
@@ -53,6 +56,8 @@ public class Jdotxt {
 	
 	// Lock object for file operations
 	private static Object fileLock = new Object();
+
+	private static final Logger logger = LogManager.getLogger(Jdotxt.class);
 	
 	public static void main( String[] args )
 	{
@@ -96,7 +101,11 @@ public class Jdotxt {
 					
 					// Try to create path
 					todoFileDir = new File(userPrefs.get("dataDir", DEFAULT_DIR));
-					todoFileDir.mkdirs();
+					if (todoFileDir.mkdirs()) {
+						logger.info("Directory was created");
+					} else {
+						logger.info("Directory wasn't created");
+					}
 					
 					showDialog = !todoFileDir.exists();
 				}

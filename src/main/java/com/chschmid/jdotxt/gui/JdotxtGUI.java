@@ -30,6 +30,8 @@ import com.todotxt.todotxttouch.task.Task;
 import com.todotxt.todotxttouch.task.TaskBag;
 import com.todotxt.todotxttouch.task.sorter.Sorters;
 import com.todotxt.todotxttouch.util.Util;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
@@ -41,24 +43,25 @@ import java.io.File;
 import java.io.IOException;
 import java.util.*;
 
-@SuppressWarnings("serial")
+@SuppressWarnings({"serial", "PMD.CommentRequired", "PMD.AvoidUsingShortType"})
 // The application main window
+
 public class JdotxtGUI extends JFrame {
 	
 	// Minimal and maximal window dimension settings
-	public static int MIN_WIDTH = 640;
-	public static int MIN_HEIGHT = 480;
+	public static final int MIN_WIDTH = 640;
+	public static final int MIN_HEIGHT = 480;
 	
 	// Lines to scroll using the mouse wheel
-	public static int SCROLL_AMOUNT = 1;
+	public static final int SCROLL_AMOUNT = 1;
 	
 	// Languages
 	public static final String[] languages = { "English" };
 	
 	// Colors
-	public static Color COLOR_GRAY_PANEL = new Color(221, 221, 221);
-	public static Color COLOR_HOVER      = new Color(136, 201, 225);
-	public static Color COLOR_PRESSED    = new Color(51, 181, 229);
+	public static final Color COLOR_GRAY_PANEL = new Color(221, 221, 221);
+	public static final Color COLOR_HOVER      = new Color(136, 201, 225);
+	public static final Color COLOR_PRESSED    = new Color(51, 181, 229);
 	
 	// Fonts
 	public static Font fontR;
@@ -95,6 +98,8 @@ public class JdotxtGUI extends JFrame {
 	private boolean reloadDialogVisible, unresolvedFileModification;
 	private AutoSaveListener autoSaveListener;
 	private DelayedActionHandler autoSaver;
+
+	private static final Logger logger = LogManager.getLogger(JdotxtGUI.class);
 	
 	public JdotxtGUI() {
 		super();
@@ -374,7 +379,7 @@ public class JdotxtGUI extends JFrame {
 			toolbar.getButtonSave().setEnabled(true);
 			if (Jdotxt.userPrefs.getBoolean("autosave", false)) {
 				saveTasks(true);
-				System.out.println("Save update");
+				logger.info("Save update");
 			}
 		}
 	}
@@ -736,6 +741,7 @@ public class JdotxtGUI extends JFrame {
 	// Modified MouseWheelListener to allow single line scrolling
 	public class MyMouseWheelListener implements MouseWheelListener {
 		private MouseWheelListener[] originalListeners;
+		@edu.umd.cs.findbugs.annotations.SuppressFBWarnings("SIC_INNER_SHOULD_BE_STATIC")
 		private int scrollAmount = 0;
 		
 		public MyMouseWheelListener(MouseWheelListener[] originalListeners, int scrollAmount) {

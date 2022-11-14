@@ -31,6 +31,8 @@ import com.chschmid.jdotxt.Jdotxt;
 import com.todotxt.todotxttouch.TodoException;
 import com.todotxt.todotxttouch.util.TaskIo;
 import com.todotxt.todotxttouch.util.Util;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * A task repository for interacting with the local file system
@@ -42,11 +44,17 @@ public class LocalFileTaskRepository implements LocalTaskRepository {
 	public static File TODO_TXT_FILE = new File(DEFAULTDIR + File.separator + "todo.txt");
 	public static File DONE_TXT_FILE = new File(DEFAULTDIR + File.separator + "done.txt");
 
+	private static final Logger logger = LogManager.getLogger(Jdotxt.class);
+
 	public static void initFiles() {
 		try {
 			if (!TODO_TXT_FILE.exists()) {
 				Util.createParentDirectory(TODO_TXT_FILE);
-				TODO_TXT_FILE.createNewFile();
+				if (TODO_TXT_FILE.createNewFile()) {
+					logger.info("File was created");
+				} else {
+					logger.info("File wasn't created");
+				}
 			}
 		} catch (IOException e) {
 			throw new TodoException("Error initializing LocalFile", e);
@@ -58,7 +66,13 @@ public class LocalFileTaskRepository implements LocalTaskRepository {
 		try {
 			if (!TODO_TXT_FILE.exists()) {
 				Util.createParentDirectory(TODO_TXT_FILE);
-				TODO_TXT_FILE.createNewFile();
+				if (TODO_TXT_FILE.createNewFile()) {
+					logger.info("File was created");
+				} else {
+					logger.info("File wasn't created");
+				}
+			} else {
+				logger.info("File already exists");
 			}
 		} catch (IOException e) {
 			throw new TodoException("Error initializing LocalFile", e);
@@ -141,19 +155,19 @@ public class LocalFileTaskRepository implements LocalTaskRepository {
 
 	@Override
 	public boolean todoFileModifiedSince(Date date) {
-		long date_ms = 0l;
+		long dateMs = 0l;
 		if (date != null) {
-			date_ms = date.getTime();
+			dateMs = date.getTime();
 		}
-		return date_ms < TODO_TXT_FILE.lastModified();
+		return dateMs < TODO_TXT_FILE.lastModified();
 	}
 
 	@Override
 	public boolean doneFileModifiedSince(Date date) {
-		long date_ms = 0l;
+		long dateMs = 0l;
 		if (date != null) {
-			date_ms = date.getTime();
+			dateMs = date.getTime();
 		}
-		return date_ms < DONE_TXT_FILE.lastModified();
+		return dateMs < DONE_TXT_FILE.lastModified();
 	}
 }

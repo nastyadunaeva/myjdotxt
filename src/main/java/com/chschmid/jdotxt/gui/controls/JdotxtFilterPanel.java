@@ -35,7 +35,7 @@ import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
 
-@SuppressWarnings("serial")
+@SuppressWarnings({"serial", "PMD.AvoidUsingShortType"})
 public class JdotxtFilterPanel extends JPanel {
 	public static final short  VISIBILITY_NONE     = 0;
 	public static final short  VISIBILITY_PROJECTS = 1;

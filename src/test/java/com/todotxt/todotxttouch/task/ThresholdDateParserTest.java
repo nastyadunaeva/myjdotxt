@@ -57,9 +57,9 @@ public class ThresholdDateParserTest {
         String task = "Threshold date due:2018-01-30 t:2018-01-29";
         Date due = ThresholdDateParser.getInstance().parseDueDate(task);
         Date thr = ThresholdDateParser.getInstance().parseThresholdDate(task);
-        Date due_expected = FORMAT.parse("2018-01-30");
-        Date thr_expected = FORMAT.parse("2018-01-29");
-        assertEquals(due_expected, due);
-        assertEquals(thr_expected, thr);
+        Date dueExpected = FORMAT.parse("2018-01-30");
+        Date thrExpected = FORMAT.parse("2018-01-29");
+        assertEquals(dueExpected, due);
+        assertEquals(thrExpected, thr);
     }
 }

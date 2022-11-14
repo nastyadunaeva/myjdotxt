@@ -32,6 +32,7 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.text.BadLocationException;
 
+import com.chschmid.jdotxt.Jdotxt;
 import com.chschmid.jdotxt.gui.controls.JdotxtDateField;
 import com.chschmid.jdotxt.gui.controls.JdotxtImageButton;
 import com.chschmid.jdotxt.gui.controls.JdotxtImageCheckBox;
@@ -39,15 +40,18 @@ import com.chschmid.jdotxt.gui.controls.JdotxtPriorityField;
 import com.chschmid.jdotxt.gui.controls.JdotxtTaskPanel;
 import com.todotxt.todotxttouch.task.Task;
 import com.todotxt.todotxttouch.util.Util;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 @SuppressWarnings("serial")
 public class JdotxtGUItest extends JFrame {
-	public static int MIN_WIDTH = 640;
-	public static int MIN_HEIGHT = 480;
+	public static final int MIN_WIDTH = 640;
+	public static final int MIN_HEIGHT = 480;
 	
 	ImageIcon iconSave     = Util.createImageIcon("/drawable/save.png");
 	public static final ImageIcon selected   = Util.createImageIcon("/drawable/check.png");
 	public static final ImageIcon unselected = Util.createImageIcon("/drawable/uncheck.png");
+	private static final Logger logger = LogManager.getLogger(JdotxtGUItest.class);
 	
 	JdotxtImageCheckBox cb;
 	JdotxtTaskPanel tp;
@@ -82,7 +86,7 @@ public class JdotxtGUItest extends JFrame {
 			
 			private void printDoc(DocumentEvent event) {
 				try {
-					System.out.println(event.getDocument().getText(0, event.getDocument().getLength()));
+					logger.info(event.getDocument().getText(0, event.getDocument().getLength()));
 					//System.out.println(editor.getText());
 				} catch (BadLocationException e) {
 					// TODO Auto-generated catch block
@@ -116,17 +120,17 @@ public class JdotxtGUItest extends JFrame {
 		
 		@Override
 		public void insertUpdate(DocumentEvent e) {
-			System.out.println(element + ": insertUpdate");
+			logger.info(element + ": insertUpdate");
 		}
 
 		@Override
 		public void removeUpdate(DocumentEvent e) {
-			System.out.println(element + ": removeUpdate");
+			logger.info(element + ": removeUpdate");
 		}
 
 		@Override
 		public void changedUpdate(DocumentEvent e) {
-			System.out.println(element + ": changedUpdate");
+			logger.info(element + ": changedUpdate");
 		}
 	}
 	
@@ -149,7 +153,7 @@ public class JdotxtGUItest extends JFrame {
 		public JdotxtImageButtonListener(String element) {this.element = element;}
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-			System.out.println(element + ": actionPerformed");
+			logger.info(element + ": actionPerformed");
 		}
 	}
 	
@@ -158,7 +162,7 @@ public class JdotxtGUItest extends JFrame {
 		public JdotxtImageCheckBoxListener(String element) {this.element = element;}
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-			System.out.println(element + ": " + cb.isSelected());
+			logger.info(element + ": " + cb.isSelected());
 		}
 	}
 }

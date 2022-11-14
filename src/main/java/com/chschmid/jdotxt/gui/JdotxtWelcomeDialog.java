@@ -45,14 +45,18 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import com.chschmid.jdotxt.Jdotxt;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
-@SuppressWarnings("serial")
+@SuppressWarnings({"serial", "PMD.AvoidUsingShortType"})
 public class JdotxtWelcomeDialog extends JDialog{
 	public static final short P_WELCOME        = 0;
 	public static final short P_PATH_NOT_FOUND = 1;
 	
 	private JTextField directory;
 	private short purpose;
+
+	private static final Logger logger = LogManager.getLogger(JdotxtWelcomeDialog.class);
 	
 	public JdotxtWelcomeDialog(short purpose) {
 		super(new WelcomeFrame());
@@ -65,9 +69,13 @@ public class JdotxtWelcomeDialog extends JDialog{
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         switch(purpose) {
 	        case P_WELCOME:
-	        	setTitle(JdotxtGUI.lang.getWord("Welcome")); break;
+	        	setTitle(JdotxtGUI.lang.getWord("Welcome"));
+				break;
 	        case P_PATH_NOT_FOUND:
-	        	setTitle(JdotxtGUI.lang.getWord("Text_file_not_found")); break;
+	        	setTitle(JdotxtGUI.lang.getWord("Text_file_not_found"));
+				break;
+			default:
+				logger.info("Purpose is not defind");
         }
 		this.setIconImage(JdotxtGUI.icon.getImage());
 		this.getContentPane().setBackground(Color.WHITE);

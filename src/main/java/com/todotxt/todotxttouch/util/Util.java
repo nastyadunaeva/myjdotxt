@@ -29,6 +29,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.channels.FileChannel;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -39,6 +40,8 @@ import javax.swing.ImageIcon;
 
 import com.chschmid.jdotxt.gui.controls.JdotxtToolbar;
 import com.todotxt.todotxttouch.TodoException;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class Util {
 
@@ -46,6 +49,7 @@ public class Util {
 	private static final int CONNECTION_TIMEOUT = 120000;
 	private static final int SOCKET_TIMEOUT = 120000;*/
 
+	private static final Logger logger = LogManager.getLogger(Util.class);
 	private Util() {
 	}
 
@@ -62,7 +66,7 @@ public class Util {
 				stream.close();
 				stream = null;
 			} catch (IOException e) {
-				System.out.print("Close stream exception" + e.getMessage());
+				logger.info("Close stream exception" + e.getMessage());
 			}
 		}
 	}
@@ -105,7 +109,7 @@ public class Util {
 			byte[] buffer = new byte[8192];
 			StringBuilder sb = new StringBuilder();
 			while ((c = is.read(buffer)) != -1) {
-				sb.append(new String(buffer, 0, c));
+				sb.append(new String(buffer, 0, c, StandardCharsets.UTF_8));
 			}
 			return sb.toString();
 		} catch (Throwable e) {
@@ -274,7 +278,7 @@ public class Util {
 		}
 		if (!dir.exists()) {
 			if (!dir.mkdirs()) {
-				System.out.print("Could not create dirs: " + dir.getAbsolutePath());
+				logger.info("Could not create dirs: " + dir.getAbsolutePath());
 				throw new TodoException("Could not create dirs: "
 						+ dir.getAbsolutePath());
 			}
@@ -283,7 +287,7 @@ public class Util {
 
 	public static void renameFile(File origFile, File newFile, boolean overwrite) {
 		if (!origFile.exists()) {
-			System.out.print("Error renaming file: " + origFile + " does not exist");
+			logger.info("Error renaming file: " + origFile + " does not exist");
 			throw new TodoException("Error renaming file: " + origFile
 					+ " does not exist");
 		}
@@ -292,14 +296,14 @@ public class Util {
 
 		if (overwrite && newFile.exists()) {
 			if (!newFile.delete()) {
-				System.out.print("Error renaming file: failed to delete " + newFile);
+				logger.info("Error renaming file: failed to delete " + newFile);
 				throw new TodoException(
 						"Error renaming file: failed to delete " + newFile);
 			}
 		}
 
 		if (!origFile.renameTo(newFile)) {
-			System.out.print("Error renaming " + origFile + " to " + newFile);
+			logger.info("Error renaming " + origFile + " to " + newFile);
 			throw new TodoException("Error renaming " + origFile + " to "
 					+ newFile);
 		}
@@ -307,14 +311,14 @@ public class Util {
 
 	public static void copyFile(File origFile, File newFile, boolean overwrite) {
 		if (!origFile.exists()) {
-			System.out.print("Error copying file: " + origFile
+			logger.info("Error copying file: " + origFile
 					+ " does not exist");
 		}
 
 		createParentDirectory(newFile);
 
 		if (!overwrite && newFile.exists()) {
-			System.out.print("Error copying file: destination exists: " + newFile);
+			logger.info("Error copying file: destination exists: " + newFile);
 			throw new TodoException("Error copying file: destination exists: "
 					+ newFile);
 		}
@@ -327,7 +331,7 @@ public class Util {
 			fis.close();
 			fos.close();
 		} catch (Exception e) {
-			System.out.print("Error copying " + origFile + " to " + newFile);
+			logger.info("Error copying " + origFile + " to " + newFile);
 			throw new TodoException("Error copying " + origFile + " to "
 					+ newFile, e);
 		}
@@ -394,7 +398,7 @@ public class Util {
         if (imgURL != null) {
             return new ImageIcon(imgURL);
         } else {
-            System.err.println("Couldn't find file: " + path);
+            logger.error("Couldn't find file: " + path);
             return null;
         }
     }

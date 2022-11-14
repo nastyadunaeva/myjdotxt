@@ -33,6 +33,9 @@ import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.chschmid.jdotxt.Jdotxt;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.mozilla.universalchardet.UniversalDetector;
 
 import com.todotxt.todotxttouch.task.Task;
@@ -49,6 +52,8 @@ public class TaskIo {
 	
 	private static boolean sWindowsLineBreaks = false;
 	private static String encoding = DEFAULT_ENCODING;
+
+	private static final Logger logger = LogManager.getLogger(TaskIo.class);
 	
 	private static String readLine(BufferedReader r) throws IOException {
 		StringBuilder sb = new StringBuilder();
@@ -78,7 +83,7 @@ public class TaskIo {
 		ArrayList<Task> items = new ArrayList<Task>();
 		BufferedReader in = null;
 		if (!file.exists()) {
-			System.out.printf(file.getAbsolutePath() + " does not exist!");
+			logger.info(file.getAbsolutePath() + " does not exist!");
 		} else {
 			encoding = detectEncoding(file);
 			InputStream is = new FileInputStream(file);
@@ -127,7 +132,7 @@ public class TaskIo {
 			}
 			fw.close();
 		} catch (Exception e) {
-			System.out.printf(TAG, e.getMessage());
+			logger.info(TAG, e.getMessage());
 		}
 	}
 	

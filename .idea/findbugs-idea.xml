@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="FindBugs-IDEA">
+    <detectors>
+      <detector name="CovariantArrayAssignment" enabled="true" />
+      <detector name="DumbMethods" enabled="false" />
+      <detector name="FindPuzzlers" enabled="false" />
+      <detector name="FindUncalledPrivateMethods" enabled="false" />
+      <detector name="HugeSharedStringConstants" enabled="false" />
+      <detector name="InstantiateStaticClass" enabled="false" />
+      <detector name="NumberConstructor" enabled="false" />
+      <detector name="StringConcatenation" enabled="false" />
+      <detector name="URLProblems" enabled="false" />
+      <detector name="UnnecessaryMath" enabled="false" />
+      <detector name="UnreadFields" enabled="false" />
+      <detector name="UselessSubclassMethod" enabled="true" />
+      <detector name="WrongMapIterator" enabled="false" />
+    </detectors>
+  </component>
+</project>

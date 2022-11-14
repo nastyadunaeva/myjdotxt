@@ -37,7 +37,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-@SuppressWarnings("serial")
+@SuppressWarnings({"serial", "PMD.AvoidUsingShortType"})
 public class JdotxtTaskList extends JPanel implements Scrollable {
 	private Filter<Task> filter;
 	private List<Task> tasks;
