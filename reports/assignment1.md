@@ -73,8 +73,9 @@ In this case we can get returned value and check it, and provide an information 
 <br>
 Inner classes which don't have a reference to the object which created it is bad for performance, because instances will take a lot of memory and can make class-creator life more than needed. But in our project the instance of class creator is created once, because it is user interface, and it means that we will not face with this problem. Because of it I disabled this flag.
 </br>
+
   ```java
-     // e.g.  com.chschmid.jdotxt.gui.JdotxtGUI.MyMouseWheelListener
+    // e.g.  com.chschmid.jdotxt.gui.JdotxtGUI.MyMouseWheelListener
     public class MyMouseWheelListener implements MouseWheelListener {
         // code of class
     } 
