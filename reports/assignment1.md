@@ -75,10 +75,10 @@ Inner classes which don't have a reference to the object which created it is bad
 </br>
 
   ```java
-    // e.g.  com.chschmid.jdotxt.gui.JdotxtGUI.MyMouseWheelListener
-    public class MyMouseWheelListener implements MouseWheelListener {
-        // code of class
-    } 
+  // e.g.  com.chschmid.jdotxt.gui.JdotxtGUI.MyMouseWheelListener
+  public class MyMouseWheelListener implements MouseWheelListener {
+     // code of class
+  } 
   ```
 
 - Switch statement found where default case is missing
